@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #C2B280;
+      /*possible colors: #EDC9AF (desert sand), 	#E1A95F (earth yellow), #C2B280 (desert) */
+      font-family: KingKendrick;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="color:darkslategrey; font-size:50px;">
+    Snake Game
+  </h1>
+  <div class="container">
+    <p>
+      Enjoy the classic Snake game right in your browser.
+      Guide the snake to eat the dots and grow as long as possible, just don't crash into yourself or the walls.
+      It's simple, fast, and a fun way to test your reflexes
+    </p>
+    <div class="snake-game">
+      <div  id="game-board"></div>
+    </div>
+    <script src="snake.js"></script>
+  </div>
+</body>
+
+</html>
