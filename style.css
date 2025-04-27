@@ -31,7 +31,8 @@ p {
   border: 2px solid #fff;
   background-image: url('background-variant.jpg');
   background-size: contain;
-  opacity: 0.8
+  opacity: 0.8;
+  position: relative;
 }
 
 .snake-game {
@@ -54,4 +55,13 @@ p {
   background-color: green;
   border-radius: 50%;
   border: 1px solid yellow;
+}
+
+.button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: #04AA6D; 
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

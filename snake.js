@@ -2,8 +2,9 @@ const gameBoard = document.getElementById("game-board");
 const gridSize = 20;
 
 let food = null;
-let gammeInterval = null;
-let direction = { x: 0, y: 0 };
+let gameInterval = null;
+let button = null;
+let direction = { x: 0, y: -1 };
 const snake = [{ x: 10, y: 10 }];
 
 const complexity = {
@@ -12,6 +13,14 @@ const complexity = {
   60: 400,
 };
 
+function createStartButton() {
+ button = document.createElement("button");
+ button.textContent = 'start game';
+ button.classList.add("button");
+ button.addEventListener('click', buttonClick) 
+ gameBoard.appendChild(button);
+}
+
 function createGrid() {
   for (let i = 0; i < gridSize * gridSize; i++) {
     // for (let i = 0; i < gridSize * gridSize; i++) {
@@ -19,10 +28,14 @@ function createGrid() {
     cell.classList.add("cell");
     gameBoard.appendChild(cell);
   }
+  createStartButton();
 }
 
 createGrid();
-
+function buttonClick() {
+  startGame();
+  button.remove();
+}
 function generateFood() {
   let newFood;
   newFood = {
@@ -66,12 +79,25 @@ function move() {
 }
 
 function gameOver() {
-  clearInterval(gammeInterval);
+  clearInterval(gameInterval);
   alert("Game over");
 }
 
 document.addEventListener("keydown", function (e) {
-  switch (e.key) {
+  console.log(e)
+  switch (e.code) {
+    case "KeyW":
+      if (direction.y === 0) direction = { x: 0, y: -1 };
+      break;
+    case "KeyS":
+      if (direction.y === 0) direction = { x: 0, y: 1 };
+      break;
+    case "KeyA":
+      if (direction.x === 0) direction = { x: -1, y: 0 };
+      break;
+    case "KeyD":
+      if (direction.x === 0) direction = { x: 1, y: 0 };
+      break;
     case "ArrowUp":
       if (direction.y === 0) direction = { x: 0, y: -1 };
       break;
@@ -83,16 +109,16 @@ document.addEventListener("keydown", function (e) {
       break;
     case "ArrowRight":
       if (direction.x === 0) direction = { x: 1, y: 0 };
-      break;
+    break;
   }
 
   console.log("DIRECTION: ", direction);
 });
 
 function startGame() {
+  console.log('start')
   food = generateFood();
-  gammeInterval = setInterval(move, 500);
+  gameInterval = setInterval(move, 1000);
   draw();
+  move();
 }
-
-startGame();
